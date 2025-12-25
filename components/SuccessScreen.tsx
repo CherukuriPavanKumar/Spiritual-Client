@@ -38,7 +38,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         background: 'linear-gradient(180deg, var(--cream-100) 0%, var(--cream-50) 100%)',
-        padding: 'var(--spacing-xl)',
+        padding: 'clamp(var(--spacing-md), 4vw, var(--spacing-xl))',
       }}
     >
       <motion.div
@@ -47,9 +47,10 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
         transition={{ duration: 0.7, ease: 'easeOut' }}
         style={{
           maxWidth: '40rem',
+          width: '100%',
           background: 'white',
           borderRadius: '1.5rem',
-          padding: 'var(--spacing-3xl) var(--spacing-2xl)',
+          padding: 'clamp(var(--spacing-xl), 5vw, var(--spacing-3xl)) clamp(var(--spacing-lg), 4vw, var(--spacing-2xl))',
           boxShadow: 'var(--shadow-xl)',
           textAlign: 'center',
         }}
