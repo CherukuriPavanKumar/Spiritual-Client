@@ -38,7 +38,7 @@ export const AboutSection: React.FC = () => {
               lineHeight: '1.3',
             }}
           >
-            About the Yajna
+            యజ్ఞం గురించి
           </h2>
 
           {/* Decorative divider */}
@@ -68,7 +68,7 @@ export const AboutSection: React.FC = () => {
                   marginBottom: 'var(--spacing-md)',
                 }}
               >
-                What is the Sahasra Chandi Yajna?
+                సహస్రచండి యజ్ఞం అంటే ఏమిటి?
               </h3>
               <p
                 style={{
@@ -78,10 +78,10 @@ export const AboutSection: React.FC = () => {
                   marginBottom: 'var(--spacing-sm)',
                 }}
               >
-                The Sahasra Chandi Yajna is a powerful Vedic ritual where the Devi
-                Mahatmyam (Durga Saptashati) is recited one thousand times. This
-                sacred ceremony invokes the blessings of the Divine Mother, Goddess
-                Durga, to bring protection, prosperity, and peace.
+                సహస్రచండి యజ్ఞం అనేది దేవీ మహాత్మ్యం (దుర్గా సప్తశతి) ను వెయ్యిసార్లు
+                పారాయణ చేసే అత్యంత శక్తివంతమైన వైదిక కార్యక్రమం. ఈ పవిత్ర యజ్ఞం ద్వారా
+                జగన్మాత అమ్మవారి, దుర్గమ్మ దేవి యొక్క ఆశీర్వాదాలను పొందుతాము. రక్షణ,
+                శ్రేయస్సు మరియు శాంతి లభిస్తాయి.
               </p>
               <p
                 style={{
@@ -90,9 +90,9 @@ export const AboutSection: React.FC = () => {
                   color: 'var(--neutral-600)',
                 }}
               >
-                Combined with the Shiva Sahasranama (thousand names of Lord Shiva),
-                this yajna creates a harmonious spiritual energy that removes
-                obstacles and bestows divine grace upon all participants.
+                శివ సహస్రనామంతో (పరమేశ్వరుని వెయ్యి నామాలు) కలిపి చేయబడే ఈ యజ్ఞం
+                ఆధ్యాత్మిక శక్తిని ప్రసరింపజేస్తుంది. విఘ్నాలను తొలగిస్తుంది మరియు
+                పాల్గొనే భక్తులందరికీ దైవానుగ్రహం ప్రసాదిస్తుంది.
               </p>
             </motion.div>
 
@@ -117,7 +117,7 @@ export const AboutSection: React.FC = () => {
                   marginBottom: 'var(--spacing-md)',
                 }}
               >
-                Spiritual Significance
+                ఆధ్యాత్మిక ప్రాముఖ్యత
               </h3>
               <ul
                 style={{
@@ -130,11 +130,11 @@ export const AboutSection: React.FC = () => {
                 }}
               >
                 {[
-                  'Removes negative influences and brings positive energy',
-                  'Grants courage, strength, and spiritual protection',
-                  'Promotes health, wealth, and overall well-being',
-                  'Purifies the environment and creates divine vibrations',
-                  'Fulfills righteous desires and spiritual aspirations',
+                  'ప్రతికూల శక్తులను తొలగించి సానుకూల శక్తిని కలుగజేస్తుంది',
+                  'ధైర్యం, బలం మరియు ఆధ్యాత్మిక రక్షణను ప్రసాదిస్తుంది',
+                  'ఆరోగ్యం, సంపద మరియు సర్వ సంపూర్ణ శ్రేయస్సును కలుగజేస్తుంది',
+                  'పరిసరాలను పవిత్రం చేసి దివ్య కంపనాలను సృష్టిస్తుంది',
+                  'ధర్మబద్ధమైన కోరికలను మరియు ఆధ్యాత్మిక ఆకాంక్షలను నెరవేరుస్తుంది',
                 ].map((benefit, index) => (
                   <li
                     key={index}
@@ -176,7 +176,7 @@ export const AboutSection: React.FC = () => {
                   marginBottom: 'var(--spacing-md)',
                 }}
               >
-                Who Can Participate?
+                ఎవరు పాల్గొనవచ్చు?
               </h3>
               <p
                 style={{
@@ -186,10 +186,9 @@ export const AboutSection: React.FC = () => {
                   marginBottom: 'var(--spacing-sm)',
                 }}
               >
-                Everyone with sincere devotion is welcome to participate in this
-                sacred yajna. Whether you attend in person at the temple or join
-                virtually from your home, your prayers and intentions will be
-                included in the ceremony.
+                నిజాయితీగల भక्తితో ఉన్న ప్రతి ఒక్కరూ ఈ పవిత్ర యజ్ఞంలో పాల్గొనవచ్చు.
+                మీరు కోవిల్లో నేరుగా హాజరు కావచ్చు లేదా ఇంటి నుండి ఆన్‌లైన్ ద్వారా
+                పాల్గొనవచ్చు. మీ ప్రార్థనలు మరియు సంకల్పాలు యజ్ఞంలో చేర్చబడతాయి.
               </p>
               <p
                 style={{
@@ -198,9 +197,9 @@ export const AboutSection: React.FC = () => {
                   color: 'var(--neutral-600)',
                 }}
               >
-                Families can participate together, and special prayers can be
-                offered for the well-being of loved ones. The yajna is conducted
-                by learned priests following traditional Vedic procedures.
+                కుటుంబ సభ్యులు కలిసి పాల్గొనవచ్చు మరియు ప్రియమైన వారి శ్రేయస్సు కోసం
+                ప్రత్యేక ప్రార్థనలు చేయవచ్చు. సాంప్రదాయ వైదిక విధానాలను అనుసరించి
+                విద్వాంసులైన పురోహితులు ఈ యజ్ఞాన్ని నిర్వహిస్తారు.
               </p>
             </motion.div>
           </div>

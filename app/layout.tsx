@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sahasra Chandi & Shiva Sahasranama Maha Yajna",
-  description: "A sacred Vedic ceremony invoking divine blessings through the recitation of one thousand praises to the Divine Mother and Lord Shiva.",
+  title: "సహస్రచండి మరియు శివ సహస్రనామ మహాయజ్ఞం",
+  description: "జగన్మాత అమ్మవారి మరియు పరమేశ్వరుని దివ్య ఆశీర్వాదాల కోసం నిర్వహించబడే పవిత్ర వైదిక యజ్ఞం.",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="te">
       <body>
         {children}
       </body>

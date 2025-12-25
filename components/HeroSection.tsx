@@ -78,9 +78,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
               letterSpacing: '0.025em',
             }}
           >
-            Sahasra Chandi and
+            సహస్రచండి మరియు
             <br />
-            Shiva Sahasranama Maha Yajna
+            శివ సహస్రనామ మహాయజ్ఞం
           </motion.h1>
 
           {/* Subtitle */}
@@ -97,9 +97,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
               fontWeight: '400',
             }}
           >
-            A sacred Vedic ceremony invoking divine blessings through the recitation
-            of one thousand praises to the Divine Mother and Lord Shiva, bringing
-            peace, prosperity, and spiritual upliftment to all participants.
+            జగన్మాత అమ్మవారి మరియు పరమేశ్వరుని దివ్య ఆశీర్వాదాల కోసం
+            నిర్వహించబడే పవిత్ర వైదిక యజ్ఞం. పాల్గొనే భక్తులందరికీ శాంతి,
+            సంపద మరియు ఆధ్యాత్మిక ఉన్నతిని ప్రసాదించును.
           </motion.p>
 
           {/* Event details */}
@@ -137,7 +137,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   marginBottom: '0.25rem',
                 }}
               >
-                Date
+                తేదీ
               </div>
               <div
                 style={{
@@ -146,7 +146,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                February 15-17, 2026
+                ఫిబ్రవరి 15-17, 2026
               </div>
             </div>
 
@@ -166,7 +166,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   marginBottom: '0.25rem',
                 }}
               >
-                Time
+                సమయం
               </div>
               <div
                 style={{
@@ -175,7 +175,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                6:00 AM - 6:00 PM
+                ఉదయం 6:00 - సాయంత్రం 6:00
               </div>
             </div>
 
@@ -195,7 +195,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   marginBottom: '0.25rem',
                 }}
               >
-                Venue
+                స్థలం
               </div>
               <div
                 style={{
@@ -204,7 +204,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                Sri Devi Temple Hall
+                శ్రీ దేవి దేవాలయం హాలు
               </div>
             </div>
           </motion.div>
@@ -216,7 +216,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
             transition={{ duration: 0.7, delay: 0.9 }}
           >
             <Button size="lg" onClick={onRegisterClick}>
-              Register to Participate in the Yajna
+              యజ్ఞంలో పాల్గొనడానికి నమోదు చేసుకోండి
             </Button>
           </motion.div>
         </motion.div>

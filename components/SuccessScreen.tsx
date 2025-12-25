@@ -24,8 +24,8 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
     : process.env.NEXT_PUBLIC_WHATSAPP_ONLINE_GROUP;
 
   const groupName = registrationData.participationMode === 'in-person'
-    ? 'In-Person Participants'
-    : 'Online Participants';
+    ? 'నేరుగా పాల్గోనే వారు'
+    : 'ఆన్‌లైన్ పాల్గోనే వారు';
 
   return (
     <motion.div
@@ -93,7 +93,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
             lineHeight: '1.3',
           }}
         >
-          Registration Complete
+          నమోదు పూర్తి అయ్యింది
         </motion.h2>
 
         <motion.div
@@ -112,9 +112,9 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
               marginBottom: 'var(--spacing-lg)',
             }}
           >
-            Your participation in the Yajna has been successfully registered.
+            యజ్ఞంలో మీ పాల్గొనువు విజయవంతంగా నమోదు అయ్యింది.
             <br />
-            Thank you for your devotion. 🙏
+            మీ భక్తికి ధన్యవాదాలు. 🙏
           </p>
 
           {/* Decorative divider */}
@@ -144,7 +144,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
                   color: 'var(--neutral-500)',
                 }}
               >
-                Registered Name:
+                నమోదు చేసిన పేరు:
               </span>
               <div
                 style={{
@@ -164,7 +164,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
                   color: 'var(--neutral-500)',
                 }}
               >
-                Email:
+                ఇమెయిల్:
               </span>
               <div
                 style={{
@@ -184,7 +184,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
                   color: 'var(--neutral-500)',
                 }}
               >
-                Participation Mode:
+                పాల్గొనువు రీతి:
               </span>
               <div
                 style={{
@@ -224,7 +224,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
                 marginBottom: 'var(--spacing-sm)',
               }}
             >
-              Join WhatsApp Group
+              వాట్స్‌అప్ గ్రూపులో చేరండి
             </h3>
             <p
               style={{
@@ -234,7 +234,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
                 lineHeight: '1.75',
               }}
             >
-              Join the <strong>{groupName}</strong> WhatsApp group to receive updates, schedules, and stay connected with other devotees.
+              యజ్ఞ సమాచారం, వేళాపట్టిక మరియు ఇతర భక్తులతో కలిపి ఉండడానికి <strong>{groupName}</strong> వాట్స్‌అప్ గ్రూపులో చేరండి.
             </p>
             <a
               href={whatsappLink}
@@ -264,7 +264,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
               }}
             >
               <span style={{ marginRight: 'var(--spacing-xs)' }}>📱</span>
-              Join Group on WhatsApp
+              గ్రూపులో చేరండి
             </a>
           </div>
 
@@ -276,8 +276,8 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
               fontStyle: 'italic',
             }}
           >
-            A confirmation email has been sent to your registered email address
-            with all the details about the yajna.
+            యజ్ఞం గురించి పూర్తి వివరాలతో పాటు మీ నమోదు చేసిన
+            ఇమెయిల్ చిల్లరాయికి నిర్ధారణ మెయిల్ పంపబడింది.
           </p>
         </motion.div>
 
@@ -288,7 +288,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
           transition={{ delay: 0.9, duration: 0.6 }}
         >
           <Button size="lg" onClick={onClose} fullWidth>
-            Return to Home
+            ముఖ్య పేజీకి తిరిగి వెళ్ళండి
           </Button>
         </motion.div>
 
@@ -304,7 +304,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
             fontStyle: 'italic',
           }}
         >
-          May the Divine Mother and Lord Shiva bless you with peace and prosperity.
+          జగన్మాత అమ్మవారు మరియు పరమేశ్వరుడు మీకు శాంతి మరియు సంపదలు ప్రసాదించు గాకా.
         </motion.p>
       </motion.div>
     </motion.div>

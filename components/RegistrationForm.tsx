@@ -10,14 +10,14 @@ import { z } from 'zod';
 
 // Form validation schemas
 const step1Schema = z.object({
-  fullName: z.string().min(2, 'Please enter your full name'),
-  gotra: z.string().min(1, 'Please enter your gotra'),
-  mobile: z.string().regex(/^\d{10}$/, 'Please enter a valid 10-digit mobile number'),
-  email: z.string().email('Please enter a valid email address'),
+  fullName: z.string().min(2, 'దయచేసి పూర్తి పేరు రాయండి'),
+  gotra: z.string().min(1, 'దయచేసి గోత్రం రాయండి'),
+  mobile: z.string().regex(/^\d{10}$/, 'దయచేసి సరైన 10 అంకాల మొబైల్ నంబరు రాయండి'),
+  email: z.string().email('దయచేసి సరైన ఇమెయిల్ చిల్లరాయి రాయండి'),
 });
 
 const step2Schema = z.object({
-  numParticipants: z.number().min(1, 'At least 1 participant required'),
+  numParticipants: z.number().min(1, 'కనీసం 1 పాల్గోనేవారు ఉండాలి'),
   participationMode: z.enum(['in-person', 'online']),
   yajnaOptions: z.string().optional(),
 });
@@ -68,9 +68,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const steps = [
-    'Devotee Details',
-    'Participation',
-    'Prasadam',
+    'భక్తుల వివరాలు',
+    'పాల్గొనువు విధానం',
+    'ప్రసాదం వివరాలు',
   ];
 
   const updateFormData = (field: string, value: any) => {
@@ -175,8 +175,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             margin: '0 auto',
             background: 'white',
             borderRadius: '1.5rem',
-            padding: 'var(--spacing-2xl)',
+            padding: 'clamp(var(--spacing-lg), 4vw, var(--spacing-2xl))',
             boxShadow: 'var(--shadow-lg)',
+            width: '100%',
           }}
         >
           <h2
@@ -189,7 +190,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
               marginBottom: 'var(--spacing-xl)',
             }}
           >
-            Register for the Yajna
+            యజ్ఞం కోసం నమోదు చేసుకోండి
           </h2>
 
           <ProgressIndicator
@@ -220,7 +221,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       marginBottom: 'var(--spacing-lg)',
                     }}
                   >
-                    Your Details
+                    మీ వివరాలు
                   </h3>
                   <p
                     style={{
@@ -230,40 +231,40 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       marginBottom: 'var(--spacing-xl)',
                     }}
                   >
-                    Please share your details so we can include you in the sacred ceremony.
+                    పవిత్ర యజ్ఞంలో మీ పేరును చేర్చడానికి దయచేసి మీ వివరాలను తెలిపించండి.
                   </p>
 
                   <Input
-                    label="Full Name"
+                    label="పూర్తి పేరు"
                     value={formData.fullName}
                     onChange={(e) => updateFormData('fullName', e.target.value)}
                     error={errors.fullName}
-                    placeholder="Enter your full name"
+                    placeholder="మీ పూర్తి పేరు రాయండి"
                     required
                   />
 
                   <Input
-                    label="Gotra"
+                    label="గోత్రం"
                     value={formData.gotra}
                     onChange={(e) => updateFormData('gotra', e.target.value)}
                     error={errors.gotra}
-                    placeholder="Enter your gotra"
-                    helperText="If you don't know your gotra, you may write 'Unknown'"
+                    placeholder="మీ గోత్రం రాయండి"
+                    helperText="మీ గోత్రం తెలీదు అంటే, 'తెలీదు' అని రాయవచ్చు"
                     required
                   />
 
                   <Input
-                    label="Mobile Number"
+                    label="మొబైల్ నంబరు"
                     type="tel"
                     value={formData.mobile}
                     onChange={(e) => updateFormData('mobile', e.target.value)}
                     error={errors.mobile}
-                    placeholder="10-digit mobile number"
+                    placeholder="10 అంకాల మొబైల్ నంబరు"
                     required
                   />
 
                   <Input
-                    label="Email Address"
+                    label="ఇమెయిల్ చిల్లరాయి"
                     type="email"
                     value={formData.email}
                     onChange={(e) => updateFormData('email', e.target.value)}
@@ -286,7 +287,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       marginBottom: 'var(--spacing-lg)',
                     }}
                   >
-                    Participation Details
+                    పాల్గొనువు వివరాలు
                   </h3>
                   <p
                     style={{
@@ -296,46 +297,46 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       marginBottom: 'var(--spacing-xl)',
                     }}
                   >
-                    Let us know how you would like to participate in the yajna.
+                    యజ్ఞంలో మీరు ఎలా పాల్గొనాలనుకుంటున్నారు అని తెలియజేయండి.
                   </p>
 
                   <Input
-                    label="Number of Participants"
+                    label="పాల్గోనే వారి సంఖ్య"
                     type="number"
                     min="1"
                     value={formData.numParticipants}
                     onChange={(e) => updateFormData('numParticipants', parseInt(e.target.value) || 1)}
                     error={errors.numParticipants}
-                    helperText="Including yourself and family members"
+                    helperText="మీరు మరియు మీ కుటుంబ సభ్యులు చేర్చి"
                     required
                   />
 
                   <RadioGroup
-                    label="Mode of Participation"
+                    label="పాల్గొనువు రీతి"
                     name="participationMode"
                     value={formData.participationMode}
                     onChange={(value) => updateFormData('participationMode', value)}
                     options={[
                       {
                         value: 'in-person',
-                        label: 'In-Person',
-                        description: 'Attend the yajna at the temple and receive blessings directly',
+                        label: 'నేరుగా',
+                        description: 'కోవిల్లో సర్వేశం నేరుగా పాల్గొని ఆశీర్వాదాలను తోల్లోనే పొందుతారు',
                       },
                       {
                         value: 'online',
-                        label: 'Online',
-                        description: 'Participate virtually from home through live streaming',
+                        label: 'ఆన్‌లైన్',
+                        description: 'ఇంటినుండి లైవ్ ద్వారా పాల్గోనండి',
                       },
                     ]}
                     error={errors.participationMode}
                   />
 
                   <Textarea
-                    label="Special Yajna Intentions (Optional)"
+                    label="యజ్ఞ సంకల్పాలు (ఐచ్ఛికం)"
                     value={formData.yajnaOptions}
                     onChange={(e) => updateFormData('yajnaOptions', e.target.value)}
-                    placeholder="You may mention any specific prayers or intentions for the yajna..."
-                    helperText="Example: Health for family members, success in endeavors, etc."
+                    placeholder="యజ్ఞం కోసం మీ ప్రార్థనలు లేదా సంకల్పాలు రాయవచ్చు..."
+                    helperText="ఉదాహరణ: కుటుంబ సభ్యుల ఆరోగ్యం, ప్రయత్నాల్లో విజయం వంటివి"
                   />
                 </div>
               )}
@@ -352,7 +353,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       marginBottom: 'var(--spacing-lg)',
                     }}
                   >
-                    Prasadam Details
+                    ప్రసాదం వివరాలు
                   </h3>
                   <p
                     style={{
@@ -362,35 +363,35 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                       marginBottom: 'var(--spacing-xl)',
                     }}
                   >
-                    Prasadam blessed during the yajna will be available for devotees.
+                    యజ్ఞంలో ఆశీర్వచించబడే ప్రసాదం భక్తులకు లభ్యం.
                   </p>
 
                   <RadioGroup
-                    label="Would you like to receive prasadam?"
+                    label="మీరు ప్రసాదం తీసుకుంటారా?"
                     name="wantsPrasadam"
                     value={formData.wantsPrasadam ? 'yes' : 'no'}
                     onChange={(value) => updateFormData('wantsPrasadam', value === 'yes')}
                     options={[
                       {
                         value: 'yes',
-                        label: 'Yes, please',
-                        description: 'I would like to receive blessed prasadam from the yajna',
+                        label: 'అవును, దయచేసి',
+                        description: 'యజ్ఞంలో ఆశీర్వచించబడే ప్రసాదాన్ని తీసుకుంటాను',
                       },
                       {
                         value: 'no',
-                        label: 'No, thank you',
-                        description: 'I will not require prasadam',
+                        label: 'వద్దు, ధన్యవాదాలు',
+                        description: 'నాకు ప్రసాదం అవసరం లేదు',
                       },
                     ]}
                   />
 
                   {formData.wantsPrasadam && (
                     <Textarea
-                      label="Delivery Address"
+                      label="పంపించు చిల్లరాయి"
                       value={formData.prasadamAddress}
                       onChange={(e) => updateFormData('prasadamAddress', e.target.value)}
                       error={errors.prasadamAddress}
-                      placeholder="Enter complete delivery address with pincode..."
+                      placeholder="పిన్కోడుతో పాటు పూర్తి చిల్లరాయి రాయండి..."
                       required
                     />
                   )}
@@ -404,22 +405,24 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             style={{
               display: 'flex',
               justifyContent: 'space-between',
+              alignItems: 'center',
               gap: 'var(--spacing-md)',
               marginTop: 'var(--spacing-2xl)',
+              flexWrap: 'wrap',
             }}
           >
             {currentStep > 1 ? (
-              <Button variant="secondary" onClick={handlePrevious}>
-                Previous
+              <Button variant="secondary" onClick={handlePrevious} style={{ flex: '1 1 auto', minWidth: '8rem' }}>
+                క్రిందకు
               </Button>
             ) : (
-              <Button variant="ghost" onClick={onCancel}>
-                Cancel
+              <Button variant="ghost" onClick={onCancel} style={{ flex: '1 1 auto', minWidth: '8rem' }}>
+                రద్దు చేయి
               </Button>
             )}
 
-            <Button onClick={handleNext}>
-              {currentStep === 3 ? 'Complete Registration' : 'Continue'}
+            <Button onClick={handleNext} style={{ flex: '1 1 auto', minWidth: '8rem' }}>
+              {currentStep === 3 ? 'నమోదు పూర్తి చేయండి' : 'ముందుకు'}
             </Button>
           </div>
         </div>
