@@ -84,13 +84,12 @@ export default function Home() {
       {/* About Section */}
       <AboutSection />
 
-      {/* Registration Form (conditionally rendered) */}
-      {pageState === 'registration' && (
+      {/* Registration Form */}
         <RegistrationForm
           onComplete={handleRegistrationComplete}
           onCancel={handleCancelRegistration}
         />
-      )}
+      
 
       {/* Footer */}
       <footer

@@ -1,72 +1,194 @@
--- Supabase SQL Schema for Yajna Registration System
+-- ============================================================================
+-- Supabase Database Schema for Sahasra Chandi & Shiva Sahasranama Maha Yajna
+-- ============================================================================
+-- This schema supports registration WITHOUT payment processing
+-- Users join WhatsApp groups after registration
+-- 
+-- Created: December 2024
+-- Last Updated: December 25, 2025
+-- ============================================================================
 
--- Create registrations table
-CREATE TABLE IF NOT EXISTS registrations (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+-- ============================================================================
+-- EXTENSIONS
+-- ============================================================================
+
+-- Enable UUID extension for generating unique identifiers
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- ============================================================================
+-- TABLES
+-- ============================================================================
+
+-- Main registrations table
+CREATE TABLE public.registrations (
+  -- Primary key and timestamps
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()) NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()) NOT NULL,
   
-  -- Step 1: Devotee Details
-  full_name TEXT NOT NULL,
-  gotra TEXT NOT NULL,
-  mobile TEXT NOT NULL,
-  email TEXT NOT NULL,
+  -- Devotee Information
+  full_name VARCHAR(255) NOT NULL,
+  gotra VARCHAR(100) NOT NULL,
+  mobile VARCHAR(15) NOT NULL CHECK (mobile ~ '^\d{10,15}$'),
+  email VARCHAR(255) NOT NULL CHECK (email ~ '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
   
-  -- Step 2: Participation Details
-  num_participants INTEGER NOT NULL DEFAULT 1,
-  participation_mode TEXT NOT NULL CHECK (participation_mode IN ('in-person', 'online')),
+  -- Participation Details
+  num_participants INTEGER NOT NULL CHECK (num_participants > 0 AND num_participants <= 100),
+  participation_mode VARCHAR(20) NOT NULL CHECK (participation_mode IN ('in-person', 'online')),
   yajna_options TEXT,
   
-  -- Step 3: Prasadam Details
-  wants_prasadam BOOLEAN NOT NULL DEFAULT false,
+  -- Prasadam Details
+  wants_prasadam BOOLEAN DEFAULT false NOT NULL,
   prasadam_address TEXT,
   
-  -- Metadata
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  -- Constraints
+  CONSTRAINT prasadam_address_required CHECK (
+    (wants_prasadam = false) OR 
+    (wants_prasadam = true AND prasadam_address IS NOT NULL AND LENGTH(TRIM(prasadam_address)) > 10)
+  )
 );
 
--- Create index for faster queries
-CREATE INDEX idx_registrations_email ON registrations(email);
-CREATE INDEX idx_registrations_mobile ON registrations(mobile);
-CREATE INDEX idx_registrations_payment_status ON registrations(payment_status);
-CREATE INDEX idx_registrations_created_at ON registrations(created_at DESC);
+-- ============================================================================
+-- INDEXES
+-- ============================================================================
 
--- Enable Row Level Security
-ALTER TABLE registrations ENABLE ROW LEVEL SECURITY;
+-- Index for email lookups
+CREATE INDEX idx_registrations_email ON public.registrations(email);
 
--- Create policy to allow inserts from anyone (for public registration)
-CREATE POLICY "Allow public insert" ON registrations
-  FOR INSERT
-  WITH CHECK (true);
+-- Index for mobile lookups
+CREATE INDEX idx_registrations_mobile ON public.registrations(mobile);
 
--- Create policy to allow users to view their own registrations
-CREATE POLICY "Allow users to view own registrations" ON registrations
-  FOR SELECT
-  USING (true); -- Adjust based on your auth requirements
+-- Index for sorting by creation date (descending)
+CREATE INDEX idx_registrations_created_at ON public.registrations(created_at DESC);
 
--- Create function to update updated_at timestamp
-CREATE OR REPLACE FUNCTION update_updated_at_column()
+-- Index for filtering by participation mode
+CREATE INDEX idx_registrations_participation_mode ON public.registrations(participation_mode);
+
+-- Composite index for prasadam filtering
+CREATE INDEX idx_registrations_prasadam ON public.registrations(wants_prasadam, participation_mode);
+
+-- ============================================================================
+-- FUNCTIONS
+-- ============================================================================
+
+-- Function to automatically update the updated_at timestamp
+CREATE OR REPLACE FUNCTION public.handle_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
-  NEW.updated_at = NOW();
+  NEW.updated_at = TIMEZONE('utc', NOW());
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Create trigger to automatically update updated_at
-CREATE TRIGGER update_registrations_updated_at
-  BEFORE UPDATE ON registrations
+-- ============================================================================
+-- TRIGGERS
+-- ============================================================================
+
+-- Trigger to auto-update updated_at on row updates
+CREATE TRIGGER set_updated_at
+  BEFORE UPDATE ON public.registrations
   FOR EACH ROW
-  EXECUTE FUNCTION update_updated_at_column();
+  EXECUTE FUNCTION public.handle_updated_at();
 
--- Optional: Create a view for admin dashboard
-CREATE OR REPLACE VIEW registration_summary AS
-SELECT 
-  DATE(created_at) as registration_date,
+-- ============================================================================
+-- ROW LEVEL SECURITY (RLS)
+-- ============================================================================
+
+-- Enable RLS on registrations table
+ALTER TABLE public.registrations ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Allow anonymous users to insert (register)
+CREATE POLICY "allow_public_registration" 
+  ON public.registrations
+  FOR INSERT
+  TO anon, authenticated
+  WITH CHECK (true);
+
+-- Policy: Allow anyone to read all registrations (for admin dashboard)
+-- Note: Modify this policy if you want to restrict read access
+CREATE POLICY "allow_read_all_registrations" 
+  ON public.registrations
+  FOR SELECT
+  TO anon, authenticated
+  USING (true);
+
+-- Policy: Only authenticated users can update registrations
+CREATE POLICY "allow_authenticated_update" 
+  ON public.registrations
+  FOR UPDATE
+  TO authenticated
+  USING (true)
+  WITH CHECK (true);
+
+-- Policy: Only authenticated users can delete registrations
+CREATE POLICY "allow_authenticated_delete" 
+  ON public.registrations
+  FOR DELETE
+  TO authenticated
+  USING (true);
+
+-- ============================================================================
+-- VIEWS
+-- ============================================================================
+
+-- View: Daily registration summary statistics
+CREATE OR REPLACE VIEW public.registration_summary AS
+SELECT
+  DATE_TRUNC('day', created_at) as registration_date,
   COUNT(*) as total_registrations,
   SUM(num_participants) as total_participants,
-  SUM(CASE WHEN participation_mode = 'in-person' THEN 1 ELSE 0 END) as in_person_count,
-  SUM(CASE WHEN participation_mode = 'online' THEN 1 ELSE 0 END) as online_count,
-  SUM(CASE WHEN wants_prasadam THEN 1 ELSE 0 END) as prasadam_requests
-FROM registrations
-GROUP BY DATE(created_at)
+  COUNT(*) FILTER (WHERE participation_mode = 'in-person') as in_person_count,
+  COUNT(*) FILTER (WHERE participation_mode = 'online') as online_count,
+  SUM(num_participants) FILTER (WHERE participation_mode = 'in-person') as in_person_participants,
+  SUM(num_participants) FILTER (WHERE participation_mode = 'online') as online_participants,
+  COUNT(*) FILTER (WHERE wants_prasadam = true) as prasadam_requests,
+  COUNT(*) FILTER (WHERE wants_prasadam = true AND participation_mode = 'in-person') as in_person_prasadam,
+  COUNT(*) FILTER (WHERE wants_prasadam = true AND participation_mode = 'online') as online_prasadam
+FROM public.registrations
+GROUP BY DATE_TRUNC('day', created_at)
 ORDER BY registration_date DESC;
+
+-- View: Overall statistics
+CREATE OR REPLACE VIEW public.registration_stats AS
+SELECT
+  COUNT(*) as total_registrations,
+  SUM(num_participants) as total_participants,
+  COUNT(*) FILTER (WHERE participation_mode = 'in-person') as total_in_person,
+  COUNT(*) FILTER (WHERE participation_mode = 'online') as total_online,
+  SUM(num_participants) FILTER (WHERE participation_mode = 'in-person') as total_in_person_participants,
+  SUM(num_participants) FILTER (WHERE participation_mode = 'online') as total_online_participants,
+  COUNT(*) FILTER (WHERE wants_prasadam = true) as total_prasadam_requests,
+  MIN(created_at) as first_registration,
+  MAX(created_at) as latest_registration
+FROM public.registrations;
+
+-- ============================================================================
+-- PERMISSIONS
+-- ============================================================================
+
+-- Grant schema usage
+GRANT USAGE ON SCHEMA public TO anon, authenticated;
+
+-- Grant table permissions
+GRANT SELECT, INSERT ON public.registrations TO anon;
+GRANT ALL ON public.registrations TO authenticated;
+
+-- Grant view permissions
+GRANT SELECT ON public.registration_summary TO anon, authenticated;
+GRANT SELECT ON public.registration_stats TO anon, authenticated;
+
+-- ============================================================================
+-- COMMENTS
+-- ============================================================================
+
+COMMENT ON TABLE public.registrations IS 'Stores registration data for Sahasra Chandi & Shiva Sahasranama Maha Yajna';
+COMMENT ON COLUMN public.registrations.id IS 'Unique registration identifier';
+COMMENT ON COLUMN public.registrations.participation_mode IS 'Either in-person or online participation';
+COMMENT ON COLUMN public.registrations.yajna_options IS 'Selected yajna participation options (both/sahasra-chandi/shiva-sahasranama)';
+COMMENT ON COLUMN public.registrations.wants_prasadam IS 'Whether the devotee wants prasadam delivered';
+COMMENT ON VIEW public.registration_summary IS 'Daily aggregated statistics of registrations';
+COMMENT ON VIEW public.registration_stats IS 'Overall registration statistics';
+
+-- ============================================================================
+-- END OF SCHEMA
+-- ============================================================================
