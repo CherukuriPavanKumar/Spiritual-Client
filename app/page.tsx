@@ -2,7 +2,9 @@
 
 import React, { useState } from 'react';
 import { HeroSection } from '@/components/HeroSection';
+import { RegistrationStats } from '@/components/RegistrationStats';
 import { AboutSection } from '@/components/AboutSection';
+import { GuruSection } from '@/components/GuruSection';
 import { RegistrationForm, RegistrationFormData } from '@/components/RegistrationForm';
 import { SuccessScreen } from '@/components/SuccessScreen';
 
@@ -81,8 +83,14 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection onRegisterClick={handleRegisterClick} />
 
+      {/* Registration Statistics */}
+      <RegistrationStats />
+
       {/* About Section */}
       <AboutSection />
+
+      {/* Guru & Videos Section */}
+      <GuruSection />
 
       {/* Registration Form */}
         <RegistrationForm

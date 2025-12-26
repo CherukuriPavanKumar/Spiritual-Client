@@ -80,7 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
           >
             సహస్రచండి మరియు
             <br />
-            శివ సహస్రనామ మహాయజ్ఞం
+            శివ దశసహస్రనామ మహాయజ్ఞం
           </motion.h1>
 
           {/* Subtitle */}
