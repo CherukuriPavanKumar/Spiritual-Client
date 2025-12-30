@@ -34,7 +34,7 @@ CREATE TABLE public.registrations (
   
   -- Participation Details
   num_participants INTEGER NOT NULL CHECK (num_participants > 0 AND num_participants <= 100),
-  participation_mode VARCHAR(20) NOT NULL CHECK (participation_mode IN ('in-person', 'online')),
+  participation_mode VARCHAR(20) NOT NULL CHECK (participation_mode IN ('in-person', 'online', 'seva')),
   yajna_options TEXT,
   
   -- Prasadam Details
@@ -139,11 +139,14 @@ SELECT
   SUM(num_participants) as total_participants,
   COUNT(*) FILTER (WHERE participation_mode = 'in-person') as in_person_count,
   COUNT(*) FILTER (WHERE participation_mode = 'online') as online_count,
+  COUNT(*) FILTER (WHERE participation_mode = 'seva') as seva_count,
   SUM(num_participants) FILTER (WHERE participation_mode = 'in-person') as in_person_participants,
   SUM(num_participants) FILTER (WHERE participation_mode = 'online') as online_participants,
+  SUM(num_participants) FILTER (WHERE participation_mode = 'seva') as seva_participants,
   COUNT(*) FILTER (WHERE wants_prasadam = true) as prasadam_requests,
   COUNT(*) FILTER (WHERE wants_prasadam = true AND participation_mode = 'in-person') as in_person_prasadam,
-  COUNT(*) FILTER (WHERE wants_prasadam = true AND participation_mode = 'online') as online_prasadam
+  COUNT(*) FILTER (WHERE wants_prasadam = true AND participation_mode = 'online') as online_prasadam,
+  COUNT(*) FILTER (WHERE wants_prasadam = true AND participation_mode = 'seva') as seva_prasadam
 FROM public.registrations
 GROUP BY DATE_TRUNC('day', created_at)
 ORDER BY registration_date DESC;
@@ -155,8 +158,10 @@ SELECT
   SUM(num_participants) as total_participants,
   COUNT(*) FILTER (WHERE participation_mode = 'in-person') as total_in_person,
   COUNT(*) FILTER (WHERE participation_mode = 'online') as total_online,
+  COUNT(*) FILTER (WHERE participation_mode = 'seva') as total_seva,
   SUM(num_participants) FILTER (WHERE participation_mode = 'in-person') as total_in_person_participants,
   SUM(num_participants) FILTER (WHERE participation_mode = 'online') as total_online_participants,
+  SUM(num_participants) FILTER (WHERE participation_mode = 'seva') as total_seva_participants,
   COUNT(*) FILTER (WHERE wants_prasadam = true) as total_prasadam_requests,
   MIN(created_at) as first_registration,
   MAX(created_at) as latest_registration

@@ -1,90 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { HeroSection } from '@/components/HeroSection';
-import { RegistrationStats } from '@/components/RegistrationStats';
 import { AboutSection } from '@/components/AboutSection';
 import { GuruSection } from '@/components/GuruSection';
-import { RegistrationForm, RegistrationFormData } from '@/components/RegistrationForm';
-import { SuccessScreen } from '@/components/SuccessScreen';
-
-type PageState = 'home' | 'registration' | 'success';
+import { PaymentSection } from '@/components/PaymentSection';
 
 export default function Home() {
-  const [pageState, setPageState] = useState<PageState>('home');
-  const [registrationData, setRegistrationData] = useState<RegistrationFormData | null>(null);
-
   const handleRegisterClick = () => {
-    // Smooth scroll to registration form
-    setPageState('registration');
-    setTimeout(() => {
-      const element = document.getElementById('registration');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 100);
-  };
-
-  const handleRegistrationComplete = async (data: RegistrationFormData) => {
-    setRegistrationData(data);
-
-    try {
-      // Save registration to database
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        // Show success screen with WhatsApp group link
-        setPageState('success');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        alert('Registration failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      alert('An error occurred. Please try again.');
+    // Smooth scroll to payment section
+    const element = document.getElementById('registration');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
-  const handleReturnHome = () => {
-    setPageState('home');
-    setRegistrationData(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleCancelRegistration = () => {
-    setPageState('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // Show success screen with WhatsApp link
-  if (pageState === 'success' && registrationData) {
-    return (
-      <SuccessScreen
-        registrationData={{
-          fullName: registrationData.fullName,
-          email: registrationData.email,
-          mobile: registrationData.mobile,
-          participationMode: registrationData.participationMode,
-        }}
-        onClose={handleReturnHome}
-      />
-    );
-  }
-
-  // Main website
   return (
     <main>
       {/* Hero Section */}
       <HeroSection onRegisterClick={handleRegisterClick} />
-
-      {/* Registration Statistics */}
-      <RegistrationStats />
 
       {/* About Section */}
       <AboutSection />
@@ -92,12 +26,8 @@ export default function Home() {
       {/* Guru & Videos Section */}
       <GuruSection />
 
-      {/* Registration Form */}
-        <RegistrationForm
-          onComplete={handleRegistrationComplete}
-          onCancel={handleCancelRegistration}
-        />
-      
+      {/* Payment Section */}
+      <PaymentSection />
 
       {/* Footer */}
       <footer
@@ -106,22 +36,27 @@ export default function Home() {
           background: 'var(--neutral-700)',
           color: 'white',
           textAlign: 'center',
+          
         }}
       >
-        <div className="container">
+        <div className="container ">
           <p
             style={{
               fontSize: 'clamp(0.875rem, 0.8rem + 0.35vw, 1rem)',
               lineHeight: '1.75',
               marginBottom: 'var(--spacing-sm)',
+              maxWidth: 'none',
+              margin: '0 auto var(--spacing-sm)',
             }}
           >
-            🕉 Sahasra Chandi and Shiva Sahasranama Maha Yajna
+            🕉 సహస్రచండి మరియు శివ దశసహస్రనామ మహాయజ్ఞం
           </p>
           <p
             style={{
               fontSize: 'clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)',
               color: 'var(--neutral-400)',
+              maxWidth: 'none',
+              margin: '0 auto',
             }}
           >
             May divine blessings be upon all devotees

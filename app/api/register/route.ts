@@ -8,7 +8,7 @@ const registrationSchema = z.object({
   mobile: z.string().regex(/^\d{10}$/),
   email: z.string().email(),
   numParticipants: z.number().min(1),
-  participationMode: z.enum(['in-person', 'online']),
+  participationMode: z.enum(['in-person', 'online', 'seva']),
   yajnaOptions: z.string().optional(),
   wantsPrasadam: z.boolean(),
   prasadamAddress: z.string().optional(),
