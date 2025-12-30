@@ -78,9 +78,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
               letterSpacing: '0.025em',
             }}
           >
-            సహస్రచండి మరియు
+            కోటి శివనామ మహా యజ్ఞం
             <br />
-            శివ దశసహస్రనామ మహాయజ్ఞం
+            సహస్ర రుద్ర చండీ హోమం – లక్ష దీపోత్సవం
           </motion.h1>
 
           {/* Subtitle */}
@@ -204,7 +204,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                శ్రీ దేవి దేవాలయం హాలు
+                శ్రీ దేవి దేవాలయం హాలు,<br/>రామంతపూర్, హైదరాబాద్
               </div>
             </div>
           </motion.div>
@@ -215,7 +215,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
           >
-            <Button size="lg" onClick={onRegisterClick}>
+            <Button size="lg" onClick={() => window.location.href = "https://pages.razorpay.com/rudra-chandi"}>
               యజ్ఞంలో పాల్గొనడానికి నమోదు చేసుకోండి
             </Button>
           </motion.div>

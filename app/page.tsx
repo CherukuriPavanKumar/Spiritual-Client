@@ -26,9 +26,6 @@ export default function Home() {
       {/* Guru & Videos Section */}
       <GuruSection />
 
-      {/* Payment Section */}
-      <PaymentSection />
-
       {/* Footer */}
       <footer
         style={{
