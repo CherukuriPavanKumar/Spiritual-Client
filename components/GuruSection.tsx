@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import tejuMaaPhoto from '../public/teju-maa-photo.jpeg';
 
 export const GuruSection: React.FC = () => {
-  const CHANNEL_URL = 'https://www.youtube.com/@Tejomayii';
+  const CHANNEL_URL = 'https://www.youtube.com/@GuruTejomayi';
   const FEATURED_VIDEO_ID = 'sQQsw8a5KS0'; // Extracted from the URL
 
   return (
@@ -371,6 +371,72 @@ export const GuruSection: React.FC = () => {
               >
                 🔔 గురువు గారి తాజా హవనాల నోటిఫికేషన్లు పొందండి
               </p>
+            </div>
+          </motion.div>
+
+          {/* Monthly Shivaratri Photos */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            style={{
+              marginTop: 'var(--spacing-2xl)',
+              padding: 'var(--spacing-xl)',
+              background: 'linear-gradient(135deg, var(--cream-50) 0%, var(--saffron-50) 100%)',
+              borderRadius: '1rem',
+              border: '2px solid var(--saffron-200)',
+            }}
+          >
+            <h3
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(1.5rem, 1.3rem + 1vw, 2rem)',
+                fontWeight: '600',
+                color: 'var(--neutral-700)',
+                textAlign: 'center',
+                marginBottom: 'var(--spacing-xl)',
+                lineHeight: '1.5',
+              }}
+            >
+              మాస శివరాత్రి – దశ సహస్రనామ హవనం, శివయ్య అమ్మవారి గణనాలతో దర్శనం
+            </h3>
+
+            {/* Photo Grid */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+                gap: 'var(--spacing-lg)',
+              }}
+            >
+              {[1, 2, 3, 4].map((num) => (
+                <motion.div
+                  key={num}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * num }}
+                  style={{
+                    position: 'relative',
+                    aspectRatio: '4/3',
+                    borderRadius: '0.75rem',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                    border: '3px solid var(--saffron-300)',
+                  }}
+                >
+                  <img
+                    src={`/pics/${num}.jpeg`}
+                    alt={`మాస శివరాత్రి హవనం ${num}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
