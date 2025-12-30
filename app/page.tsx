@@ -4,7 +4,6 @@ import React from 'react';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
 import { GuruSection } from '@/components/GuruSection';
-import { PaymentSection } from '@/components/PaymentSection';
 
 export default function Home() {
   const handleRegisterClick = () => {
