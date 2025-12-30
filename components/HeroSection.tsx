@@ -146,7 +146,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                ఫిబ్రవరి 15-17, 2026
+                15 ఫిబ్రవరి 2026
               </div>
             </div>
 
