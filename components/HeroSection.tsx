@@ -175,7 +175,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                ఉదయం 6:00 - సాయంత్రం 6:00
+                ఉదయం 6 గం. – ఉదయం 6 గం. (24 గంటలు)
               </div>
             </div>
 
