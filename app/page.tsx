@@ -52,11 +52,32 @@ export default function Home() {
               fontSize: 'clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)',
               color: 'var(--neutral-400)',
               maxWidth: 'none',
-              margin: '0 auto',
+              margin: '0 auto var(--spacing-md)',
             }}
           >
             May divine blessings be upon all devotees
           </p>
+          <a
+            href="/terms-and-conditions.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: 'clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)',
+              color: 'var(--saffron-300)',
+              textDecoration: 'underline',
+              display: 'inline-block',
+              marginTop: 'var(--spacing-sm)',
+              transition: 'color 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--saffron-200)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--saffron-300)';
+            }}
+          >
+            నియమాలు మరియు షరతులు (Terms & Conditions)
+          </a>
         </div>
       </footer>
     </main>
