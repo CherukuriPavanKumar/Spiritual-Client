@@ -128,7 +128,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   marginBottom: 'var(--spacing-xs)',
                 }}
               >
-                📅
+                🗓️
               </div>
               <div
                 style={{
