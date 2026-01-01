@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
+import { size } from 'zod';
 
 interface HeroSectionProps {
   onRegisterClick: () => void;
@@ -51,17 +52,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
         >
           {/* Sacred symbol */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            style={{
-              marginBottom: 'var(--spacing-xl)',
-              fontSize: '4rem',
-              color: 'var(--saffron-500)',
-            }}
-          >
-            🕉
-          </motion.div>
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1, delay: 0.2 }}
+  className="mb-8 flex justify-center"
+>
+  <img
+    src="/favicon.ico"
+    alt="Sacred Symbol"
+    className="w-64 h-64 object-contain"
+  />
+</motion.div>
+
 
           {/* Title */}
           <motion.h1
@@ -78,9 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
               letterSpacing: '0.025em',
             }}
           >
-            కోటి శివనామ మహా యజ్ఞం
-            <br />
-            సహస్ర రుద్ర చండీ హోమం – లక్ష దీపోత్సవం
+            సహస్ర రుద్ర, సహస్ర చండీ సహిత కోటి శివ నామ మహా యజ్ఞము - లక్ష దీపోత్సవము
           </motion.h1>
 
           {/* Subtitle */}

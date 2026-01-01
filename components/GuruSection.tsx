@@ -885,7 +885,7 @@ export const GuruSection: React.FC = () => {
                 style={{
                   fontSize: 'clamp(1.5rem, 1.3rem + 1vw, 2rem)',
                   lineHeight: '2',
-                  color: 'white',
+                  color: 'black',
                   textAlign: 'center',
                   fontWeight: '700',
                   marginTop: 'var(--spacing-md)',
