@@ -4,6 +4,8 @@ import React from 'react';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
 import { GuruSection } from '@/components/GuruSection';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const handleRegisterClick = () => {
@@ -24,6 +26,91 @@ export default function Home() {
 
       {/* Guru & Videos Section */}
       <GuruSection />
+
+      {/* Registration CTA Section */}
+      <section
+        style={{
+          padding: 'var(--spacing-section) 0',
+          background: 'linear-gradient(180deg, var(--cream-50) 0%, white 100%)',
+        }}
+      >
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{
+              maxWidth: '50rem',
+              margin: '0 auto',
+              textAlign: 'center',
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(1.875rem, 1.6rem + 1.375vw, 2.75rem)',
+                fontWeight: '700',
+                color: 'var(--neutral-700)',
+                marginBottom: 'var(--spacing-lg)',
+                lineHeight: '1.3',
+              }}
+            >
+              మహా యజ్ఞంలో పాల్గొనండి
+            </h2>
+            <h2
+              style={{
+                fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
+                lineHeight: '2',
+                color: 'var(--neutral-600)',
+                marginBottom: 'var(--spacing-2xl)',
+              }}
+            >
+              నమోదు, సేవా సహకారం లేదా ఏవైనా సందేహాల కోసం మాతో సంప్రదించండి. 
+              <br />
+              నేరుగా చెల్లింపు చేయడానికి కూడా మీరు సిద్ధంగా ఉన్నారు.
+            </h2>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 'var(--spacing-lg)',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Link
+                href="/register"
+                style={{
+                  display: 'inline-block',
+                  padding: 'clamp(var(--spacing-md), 2vw, var(--spacing-lg)) clamp(var(--spacing-xl), 4vw, var(--spacing-3xl))',
+                  background: 'linear-gradient(135deg, var(--saffron-500) 0%, var(--gold-500) 100%)',
+                  color: 'black',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 'clamp(1.125rem, 1rem + 0.625vw, 1.375rem)',
+                  fontWeight: '600',
+                  borderRadius: '9999px',
+                  textDecoration: 'none',
+                  boxShadow: '0 8px 24px rgba(217, 119, 6, 0.3)',
+                  transition: 'all 0.3s ease',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(217, 119, 6, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(217, 119, 6, 0.3)';
+                }}
+              >
+                � మాతో సంప్రదించండి
+              </Link>              
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer
