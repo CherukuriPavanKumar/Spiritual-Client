@@ -505,9 +505,7 @@ export default function ContributionsPage() {
               display: 'flex',
               flexDirection: 'column',
               gap: 'var(--spacing-sm)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+              alignItems: 'center',
             }}
           >
             {[
