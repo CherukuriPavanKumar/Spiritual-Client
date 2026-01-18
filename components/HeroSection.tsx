@@ -204,7 +204,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                శ్రీ గంగాభవానీ దేవాలయం,<br/>రామంతపూర్, హైదరాబాద్
+                శివ శక్తి సన్నిధి, తుక్కుగూడ, హైదరాబాద్
               </div>
             </div>
           </motion.div>
