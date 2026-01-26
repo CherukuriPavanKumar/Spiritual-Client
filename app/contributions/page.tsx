@@ -631,14 +631,14 @@ export default function ContributionsPage() {
         {/* Payment Button */}
         <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
           <a
-            href="https://pages.razorpay.com/rudra-chandi"
+            href="https://pages.razorpay.com/stores/contribution"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: 'inline-block',
               padding: 'clamp(var(--spacing-md), 2vw, var(--spacing-lg)) clamp(var(--spacing-2xl), 4vw, var(--spacing-3xl))',
               background: 'linear-gradient(135deg, var(--saffron-500) 0%, var(--gold-500) 100%)',
-              color: 'black',
+              color: 'white',
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(1.125rem, 1rem + 0.625vw, 1.375rem)',
               fontWeight: '600',
@@ -646,6 +646,7 @@ export default function ContributionsPage() {
               textDecoration: 'none',
               boxShadow: '0 8px 24px rgba(217, 119, 6, 0.3)',
               transition: 'all 0.3s ease',
+              backgroundColor: 'black',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';

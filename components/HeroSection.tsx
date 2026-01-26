@@ -218,6 +218,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
             <Button size="lg" onClick={() => window.location.href = "https://pages.razorpay.com/rudra-chandi"}>
               యజ్ఞంలో పాల్గొనడానికి నమోదు చేసుకోండి
             </Button>
+            <br></br>
+            <br></br>
+            <Button size="lg" onClick={() => window.location.href = "/contributions"} >
+              Contributions Page
+            </Button>
           </motion.div>
         </motion.div>
       </div>
