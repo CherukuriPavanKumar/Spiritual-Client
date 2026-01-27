@@ -89,17 +89,7 @@ export default function BooksPage() {
           >
             {selectedBook ? books.find(b => b.id === selectedBook)?.title : 'గ్రంథాలు'}
           </h1>
-          <h5
-            style={{
-              fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
-              lineHeight: '1.75',
-              color: 'black',
-              textAlign: 'center',
-              marginTop: 'var(--spacing-sm)',
-            }}
-          >
-            {selectedBook ? 'గ్రంథ నమోదు & ఆర్డర్ ఫారం' : 'మీరు కావలసిన గ్రంథాన్ని ఎంచుకోండి'}
-          </h5>
+          
         </div>
       </div>
 
@@ -189,7 +179,7 @@ export default function BooksPage() {
                         fontWeight: '600',
                       }}
                     >
-                      ఆర్డర్ చేయండి
+                      డౌన్లోడ్
                       <svg
                         width="16"
                         height="16"
