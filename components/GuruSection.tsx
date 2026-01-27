@@ -703,40 +703,85 @@ export const GuruSection: React.FC = () => {
                 </p>
               </div>
 
-              <div
-                style={{
-                  padding: 'var(--spacing-lg)',
-                  background: 'var(--cream-50)',
-                  borderRadius: '0.75rem',
-                  textAlign: 'center',
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
-                    lineHeight: '2',
-                    color: 'var(--neutral-700)',
-                    fontWeight: '600',
-                    marginBottom: 'var(--spacing-xs)',
-                  }}
-                >
-                  స్థలం:
-                </p>
-                <p
-                  style={{
-                    fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
-                    lineHeight: '2',
-                    color: 'var(--neutral-600)',
-                  }}
-                >
-                  శ్రీ గంగాభవానీ దేవాలయం,
-                  <br />
-                  శ్రీ సత్యనారాయణ స్వామి దేవాలయం పక్కన,
-                  <br />
-                  రామంతాపూర్, హైదరాబాద్.
-                </p>
-              </div>
-
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-xl)' }}>
+                          {/* Venue Section */}
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            style={{
+                              padding: 'var(--spacing-lg)',
+                              background: 'linear-gradient(135deg, var(--saffron-50) 0%, var(--gold-50) 100%)',
+                              borderRadius: '1rem',
+                              border: '2px solid var(--saffron-200)',
+                            }}
+                          >
+                            <h3
+                              style={{
+                                fontFamily: 'var(--font-heading)',
+                                fontSize: 'clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem)',
+                                fontWeight: '600',
+                                color: 'var(--neutral-700)',
+                                marginBottom: 'var(--spacing-md)',
+                                textAlign: 'center',
+                              }}
+                            >
+                              స్థలం
+                            </h3>
+                            <div style={{ textAlign: 'center' }}>
+                              <p
+                                style={{
+                                  fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
+                                  lineHeight: '2',
+                                  color: 'var(--neutral-600)',
+                                  marginBottom: 'var(--spacing-sm)',
+                                  maxWidth: 'none',
+                                  fontWeight: '600',
+                                }}
+                              >
+                                శివ శక్తి సన్నిధి
+                              </p>
+                              <p
+                                style={{
+                                  fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.125rem)',
+                                  lineHeight: '2',
+                                  color: 'var(--neutral-600)',
+                                  maxWidth: 'none',
+                                }}
+                              >
+                                Behind AVM Hotel, Sreenagar,<br />
+                                Near ORR Exit No. 14, Tukkuguda,<br />
+                                Hyderabad, Telangana – 501359
+                              </p>
+                              <a
+                                href="https://maps.app.goo.gl/nEDsxQ9hveVmWBn99"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  display: 'inline-block',
+                                  marginTop: 'var(--spacing-md)',
+                                  padding: 'var(--spacing-sm) var(--spacing-md)',
+                                  background: 'var(--saffron-500)',
+                                  color: 'white',
+                                  borderRadius: '0.5rem',
+                                  textDecoration: 'none',
+                                  fontSize: 'clamp(0.875rem, 0.8rem + 0.375vw, 1rem)',
+                                  fontWeight: '500',
+                                  transition: 'background 0.3s ease',
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = 'var(--saffron-600)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = 'var(--saffron-500)';
+                                }}
+                              >
+                                📍 Google Maps లో చూడండి
+                              </a>
+                            </div>
+                          </motion.div>
+                          </div>
               <div style={{ textAlign: 'center' }}>
                 <p
                   style={{
