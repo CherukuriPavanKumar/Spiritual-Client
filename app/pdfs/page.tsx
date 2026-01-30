@@ -9,8 +9,8 @@ export default function PDFsPage() {
       id: 1,
       title: 'శివ సహస్రనామావళి',
       description: 'శివ దశసహస్రనామావళి గ్రంథం PDF',
-      filename: 'SahasraNamavali.pdf',
-      url: '/pdfs/SahasraNamavali.pdf',
+      filename: 'DashaSahasraNamavali.pdf',
+      url: '/pdfs/DashaSahasraNamavali.pdf',
     },
     {
       id: 2,
