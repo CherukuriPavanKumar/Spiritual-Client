@@ -238,7 +238,9 @@ export default function PDFsPage() {
                 {/* Download Button */}
                 <a
                   href={pdf.url}
-                  download
+                  target="_blank"
+rel="noopener noreferrer"
+
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
