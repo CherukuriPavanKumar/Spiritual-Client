@@ -1,23 +1,19 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Analytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const url =
-      pathname + (searchParams.toString() ? `?${searchParams}` : "");
-
-    // @ts-ignore – gtag is injected by GA script
+    // @ts-ignore
     window.gtag("event", "page_view", {
-      page_path: url,
+      page_path: pathname,
     });
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }
