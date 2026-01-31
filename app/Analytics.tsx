@@ -8,14 +8,15 @@ export default function Analytics() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const url =
       pathname + (searchParams.toString() ? `?${searchParams}` : "");
 
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "page_view", {
-        page_path: url,
-      });
-    }
+    // @ts-ignore – gtag is injected by GA script
+    window.gtag("event", "page_view", {
+      page_path: url,
+    });
   }, [pathname, searchParams]);
 
   return null;
