@@ -89,7 +89,7 @@ export const AboutSection: React.FC = () => {
                     fontWeight: '600',
                   }}
                 >
-                  శివ శక్తి సన్నిధి
+                  సాయిబాబా ఆలయం,
                 </p>
                 <p
                   style={{
@@ -99,9 +99,8 @@ export const AboutSection: React.FC = () => {
                     maxWidth: 'none',
                   }}
                 >
-                  Behind AVM Hotel, Sreenagar,<br />
-                  Near ORR Exit No. 14, Tukkuguda,<br />
-                  Hyderabad, Telangana – 501359
+                  Ganesh Enclave, Mallapur, Balapur,<br />
+                  Hyderabad, Telangana - 500005
                 </p>
                 <a
                   href="https://maps.app.goo.gl/nEDsxQ9hveVmWBn99"

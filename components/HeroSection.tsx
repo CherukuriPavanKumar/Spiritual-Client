@@ -204,7 +204,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                శివ శక్తి సన్నిధి, తుక్కుగూడ, హైదరాబాద్
+                సాయిబాబా ఆలయం, మల్లాపూర్, బాలాపూర్, హైదరాబాద్
               </div>
             </div>
           </motion.div>

@@ -740,7 +740,7 @@ export const GuruSection: React.FC = () => {
                                   fontWeight: '600',
                                 }}
                               >
-                                శివ శక్తి సన్నిధి
+                                సాయిబాబా ఆలయం, గణేష్ ఎన్‌క్లేవ్, మల్లాపూర్, బాలాపూర్, హైదరాబాద్
                               </p>
                               <p
                                 style={{
@@ -750,10 +750,9 @@ export const GuruSection: React.FC = () => {
                                   maxWidth: 'none',
                                 }}
                               >
-                                Behind AVM Hotel, Sreenagar,<br />
-                                Near ORR Exit No. 14, Tukkuguda,<br />
-                                Hyderabad, Telangana – 501359
-                              </p>
+                                Ganesh Enclave, Mallapur, Balapur,<br />
+                  Hyderabad, Telangana - 500005
+                </p>
                               <a
                                 href="https://maps.app.goo.gl/nEDsxQ9hveVmWBn99"
                                 target="_blank"
