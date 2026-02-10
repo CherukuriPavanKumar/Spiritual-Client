@@ -740,7 +740,7 @@ export const GuruSection: React.FC = () => {
                                   fontWeight: '600',
                                 }}
                               >
-                                తిరుమల షిరిడి క్షేత్రం, గణేష్ ఎన్‌క్లేవ్, మల్లాపూర్, బాలాపూర్, హైదరాబాద్
+                                తిరుమల షిరిడి క్షేత్రం
                               </p>
                               <p
                                 style={{
@@ -750,11 +750,11 @@ export const GuruSection: React.FC = () => {
                                   maxWidth: 'none',
                                 }}
                               >
-                                Ganesh Enclave, Mallapur, Balapur,<br />
-                  Hyderabad, Telangana - 500005
+                                గణేష్ ఎన్‌క్లేవ్, మల్లాపూర్, బాలాపూర్<br />
+                  హైదరాబాద్, తెలంగాణ - 500005
                 </p>
                               <a
-                                href="https://maps.app.goo.gl/nEDsxQ9hveVmWBn99"
+                                href="https://maps.app.goo.gl/9k3XsFyEidD3gmjF9"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
