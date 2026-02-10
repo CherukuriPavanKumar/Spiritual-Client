@@ -103,7 +103,7 @@ export const AboutSection: React.FC = () => {
                   హైదరాబాద్, తెలంగాణ - 500005
                 </p>
                 <a
-                  href="https://maps.app.goo.gl/nEDsxQ9hveVmWBn99"
+                  href="https://maps.app.goo.gl/9k3XsFyEidD3gmjF9"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
