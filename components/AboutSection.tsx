@@ -89,7 +89,7 @@ export const AboutSection: React.FC = () => {
                     fontWeight: '600',
                   }}
                 >
-                  సాయిబాబా ఆలయం,
+                 తిరుమల షిరిడి క్షేత్రం ,
                 </p>
                 <p
                   style={{

@@ -204,7 +204,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onRegisterClick }) => 
                   color: 'var(--neutral-700)',
                 }}
               >
-                సాయిబాబా ఆలయం, మల్లాపూర్, బాలాపూర్, హైదరాబాద్
+                తిరుమల షిరిడి క్షేత్రం, మల్లాపూర్, బాలాపూర్, హైదరాబాద్
               </div>
             </div>
           </motion.div>
